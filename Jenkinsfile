@@ -6,6 +6,9 @@ pipeline {
             steps{
                 script{
                     app = docker.build("dewaniadi/test_jenkins")
+                    docker.withRegistry('', 'docker-hub'){
+                        app.push("${env.BUILD_NUMBER}")
+                    }
                 }
             }
         }
