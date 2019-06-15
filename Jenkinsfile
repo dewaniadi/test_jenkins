@@ -1,11 +1,13 @@
+def app = 'Unknown'
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent any
     stages {
-        stage('build') {
-            steps {
-                sh 'docker build -t dewaniadi/test_jenkins:${BUILD_NUMBER} -f Dockerfile .'
-                sh 'docker push dewaniadi/test_jenkins:${BUILD_NUMBER}'
+        stage('build'){
+            steps{
+                script{
+                    app = docker.build("dewaniadi/test_jenkins")
+                }
             }
         }
-    }
+    }  
 }
