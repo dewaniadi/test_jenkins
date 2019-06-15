@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
+                sh 'docker build -t dewaniadi/test_jenkins:${BUILD_NUMBER} -f Dockerfile .'
+                sh 'docker push dewaniadi/test_jenkins:${BUILD_NUMBER}'
             }
         }
     }
