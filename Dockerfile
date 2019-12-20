@@ -4,4 +4,4 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-CMD [ "python", "./iss.py" ]
+CMD [ "python", "./testjenkins.py" ]
